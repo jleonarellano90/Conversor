@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>pdf2xls</display-name>
+  
+  <!-- PAGINA DE INICIO -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!-- CONTEXTOS EXTERNOS PARA DispatcherServlet -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/pdf2xls-servlet.xml</param-value>
+	</context-param>	
+	
+	<!-- ESCUCHADOR PARA PERSONALIZAR NOMBRE Y UBICACION DE ARCHIVO "pdftoxls-servlet.xml" -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- MANEJADOR DE REQUEST Y RESPONSE -->
+	<servlet>
+		<servlet-name>pdf2xls</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- EXTENSION ".do" -->
+	<servlet-mapping>
+		<servlet-name>pdf2xls</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- PAGINAS DE ERROR -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/jsp/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/jsp/error500.jsp</location>
+	</error-page>
+  
+</web-app>
